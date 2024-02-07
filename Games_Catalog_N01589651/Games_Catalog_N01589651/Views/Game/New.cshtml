@@ -1,0 +1,31 @@
+﻿﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Game</h2>
+<form action="/Game/Create" method="POST">
+    <div>
+        <label>Game Name: </label> <input type="text" name="GameName" />
+    </div>
+    <div>
+        <label>Release Date: </label> <input type="datetime" name="ReleaseDate" />
+    </div>
+    <div>
+        <label>Price: </label> <input type="number" name="Price" />
+    </div>
+    <div>
+        <label>Description: </label> <input type="text" name="Description" />
+    </div>
+    <div>
+        <label>Genre Name: </label> <input type="text" name="GenreName" />
+    </div>
+    <div>
+        <label>Developer Name: </label> <input type="text" name="DeveloperName" />
+    </div>
+    <div>
+        <input type="submit" value="Add Game" />
+
+    </div>
+</form>
+

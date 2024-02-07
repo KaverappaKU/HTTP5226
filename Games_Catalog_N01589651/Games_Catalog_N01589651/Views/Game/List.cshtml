@@ -8,5 +8,10 @@
 @foreach (var game in Model)
 {
     <h4><a href="/Game/Details/@game.GameId">@game.GameName</a></h4>
+    <div>Release Date: @game.ReleaseDate</div>
+    <div>Price: @game.Price</div>
+    <div>Description: @game.Description</div>
+    <div>Genre Name: @game.GenreName</div>
+    <div>Developer Name: @game.DeveloperName</div>
 }
 

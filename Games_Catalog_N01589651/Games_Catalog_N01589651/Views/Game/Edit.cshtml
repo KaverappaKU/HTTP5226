@@ -1,0 +1,38 @@
+﻿﻿@model Games_Catalog_N01589651.Models.GameDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Game</h2>
+
+<form method="POST" action="/Game/Update/@Model.GameId">
+    <input type="text" style="display:none;" name="GameId" value="@Model.GameId" />
+    <div>
+        <label>Game Name</label>
+        <input type="text" name="GameName" value="@Model.GameName" />
+    </div>
+    <div>
+        <label>Release Date</label>
+        <input type="datetime" name="ReleaseDate" value="@Model.ReleaseDate" />
+    </div>
+    <div>
+        <label>Price</label>
+        <input type="text" name="Price" value="@Model.Price" />
+    </div>
+    <div>
+        <label>Description</label>
+        <input type="text" name="Description" value="@Model.Description" />
+    </div>
+    <div>
+        <label>Genre Name</label>
+        <input type="text" name="GenreName" value="@Model.GenreName" />
+    </div>
+    <div>
+        <label>Developer Name</label>
+        <input type="text" name="DeveloperName" value="@Model.DeveloperName" />
+    </div>
+    <div>
+        <input type="submit" value="Update" />
+    </div>
+
+</form>
