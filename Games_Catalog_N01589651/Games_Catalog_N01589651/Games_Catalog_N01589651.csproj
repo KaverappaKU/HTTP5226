@@ -182,8 +182,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DeveloperController.cs" />
+    <Compile Include="Controllers\DeveloperDataController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\GameDataController.cs" />
+    <Compile Include="Controllers\GenreController.cs" />
+    <Compile Include="Controllers\GenreDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -291,9 +295,12 @@
     <Content Include="Views\Game\Error.cshtml" />
     <Content Include="Views\Game\New.cshtml" />
     <Content Include="Views\Game\Edit.cshtml" />
+    <Content Include="Views\Game\DeleteConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Developer\" />
+    <Folder Include="Views\Genre\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

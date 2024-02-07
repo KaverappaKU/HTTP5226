@@ -4,14 +4,16 @@
 }
 
 <h2>List Games</h2>
-<a href="/Game/New">New Game</a>
-@foreach (var game in Model)
-{
-    <h4><a href="/Game/Details/@game.GameId">@game.GameName</a></h4>
-    <div>Release Date: @game.ReleaseDate</div>
-    <div>Price: @game.Price</div>
-    <div>Description: @game.Description</div>
-    <div>Genre Name: @game.GenreName</div>
-    <div>Developer Name: @game.DeveloperName</div>
-}
+<a class="btn btn-primary m-3 " href="/Game/New">New Game</a>
+<div class="list-group">
+    @foreach (var game in Model)
+    {
+        <div class="list-group-item m-3">
+            <a style="text-decoration:none;" href="/Game/Details/@game.GameId">@game.GameName</a>
+            <a class="btn btn-primary m-3 float-end" href="/Game/Edit/@game.GameId">Edit</a>
+            <a class="btn btn-danger m-3 float-end" href="/Game/DeleteConfirm/@game.GameId">Delete</a>
+        </div>
+
+    }
+</div>
 

@@ -35,7 +35,9 @@ namespace Games_Catalog_N01589651.Models
         public string Price { get; set; } 
         public string Description { get; set; }
 
+        public int GenreId { get; set; }
         public string GenreName { get; set; }
+        public int DeveloperId { get; set; }
         public string DeveloperName { get;set; }
 
     }

@@ -5,34 +5,28 @@
 
 <h2>Edit Game</h2>
 
-<form method="POST" action="/Game/Update/@Model.GameId">
+<form action="/Game/Update/@Model.GameId" method="POST">
     <input type="text" style="display:none;" name="GameId" value="@Model.GameId" />
-    <div>
-        <label>Game Name</label>
-        <input type="text" name="GameName" value="@Model.GameName" />
+    <div class="mb-3">
+        <label class="form-label">Game Name: </label> <input class="form-control" value="@Model.GameName" type="text" name="GameName" />
     </div>
-    <div>
-        <label>Release Date</label>
-        <input type="datetime" name="ReleaseDate" value="@Model.ReleaseDate" />
+    <div class="mb-3">
+        <label class="form-label">Release Date: </label> <input class="form-control" type="date" value="@Model.ReleaseDate" name="ReleaseDate" />
     </div>
-    <div>
-        <label>Price</label>
-        <input type="text" name="Price" value="@Model.Price" />
+    <div class="mb-3">
+        <label class="form-label">Price: </label> <input class="form-control" type="number" value="@Model.Price" name="Price" />
     </div>
-    <div>
-        <label>Description</label>
-        <input type="text" name="Description" value="@Model.Description" />
+    <div class="mb-3">
+        <label class="form-label">Description: </label> <input class="form-control" type="text" value="@Model.Description" name="Description" />
     </div>
-    <div>
-        <label>Genre Name</label>
-        <input type="text" name="GenreName" value="@Model.GenreName" />
+    <div class="mb-3">
+        <label class="form-label">Genre ID: </label> <input class="form-control" type="number" name="GenreId" value="@Model.GenreId" />
     </div>
-    <div>
-        <label>Developer Name</label>
-        <input type="text" name="DeveloperName" value="@Model.DeveloperName" />
+    <div class="mb-3">
+        <label class="form-label">Developer ID: </label> <input class="form-control" type="text" name="DeveloperId" value="@Model.DeveloperId" />
     </div>
-    <div>
-        <input type="submit" value="Update" />
-    </div>
+    <div class="mb-3">
+        <input class="btn btn-primary" type="submit" value="Update Game" />
 
+    </div>
 </form>

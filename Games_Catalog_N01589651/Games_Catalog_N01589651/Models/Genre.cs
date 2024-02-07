@@ -15,5 +15,12 @@ namespace Games_Catalog_N01589651.Models
 
         //A Genre can have many games
         public ICollection<Game> Games { get; set; }
+
+    }
+
+    public class GenreDto
+    {
+        public int GenreId { get; set; }
+        public string GenreName { get; set; }
     }
 }

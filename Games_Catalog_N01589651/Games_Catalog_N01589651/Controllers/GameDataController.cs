@@ -32,7 +32,9 @@ namespace Games_Catalog_N01589651.Controllers
                 ReleaseDate = g.ReleaseDate,    
                 Price = g.Price,
                 Description = g.Description,
+                GenreId = g.Genres.GenreId,
                 GenreName = g.Genres.GenreName,
+                DeveloperId = g.Developers.DeveloperId,
                 DeveloperName = g.Developers.DeveloperStudioName
             }
             ));
@@ -53,7 +55,9 @@ namespace Games_Catalog_N01589651.Controllers
                 ReleaseDate = Game.ReleaseDate,
                 Price = Game.Price,
                 Description = Game.Description,
+                GenreId = Game.Genres.GenreId,
                 GenreName = Game.Genres.GenreName,
+                DeveloperId = Game.Developers.DeveloperId,
                 DeveloperName = Game.Developers.DeveloperStudioName
 
             };
@@ -68,6 +72,7 @@ namespace Games_Catalog_N01589651.Controllers
         // POST: api/GameData/UpdateGame/5
         [ResponseType(typeof(void))]
         [HttpPost]
+        [Route("api/gamedata/updategame/{id}")]
         public IHttpActionResult UpdateGame(int id, Game Game)
         {
             if (!ModelState.IsValid)
@@ -118,9 +123,22 @@ namespace Games_Catalog_N01589651.Controllers
             return Ok();
         }
 
-        // POST: api/GameData/DeleteGame/5
+        /// <summary>
+        /// Deletes a game from the system by it's ID.
+        /// </summary>
+        /// <param name="id">The primary key of the game</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <example>
+        /// POST: api/GameData/DeleteGame/2
+        /// FORM DATA: (empty)
+        /// </example>
         [ResponseType(typeof(Game))]
         [HttpPost]
+        [Route("api/GameData/DeleteGame/{id}")]
         public IHttpActionResult DeleteGame(int id)
         {
             Game Game = db.Games.Find(id);
