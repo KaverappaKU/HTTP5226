@@ -1,4 +1,5 @@
 ﻿using Games_Catalog_N01589651.Models;
+using Games_Catalog_N01589651.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -39,18 +40,26 @@ namespace Games_Catalog_N01589651.Controllers
         // GET: Developer/Details/2
         public ActionResult Details(int id)
         {
-
+            DeveloperDetails ViewModel = new DeveloperDetails();
             //objective: communicate with our Developer data api to retrieve one Developer
             //curl https://localhost:44370/api/developerdata/finddeveloper/{id}
 
             string url = "developerdata/finddeveloper/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-
-            Debug.WriteLine("The response code is ");
-            Debug.WriteLine(response.StatusCode);
-
             DeveloperDto SelectedDeveloper = response.Content.ReadAsAsync<DeveloperDto>().Result;
-            return View(SelectedDeveloper);
+            
+
+
+            url = "GameData/ListGamesForDevelopers/" + id;
+            response = client.GetAsync(url).Result;
+            IEnumerable<GameDto> gameDtos = response.Content.ReadAsAsync<IEnumerable<GameDto>>().Result;
+
+
+
+            ViewModel.SelectedDeveloper = SelectedDeveloper;
+            ViewModel.GameCollection = gameDtos;
+
+            return View(ViewModel);
         }
 
         public ActionResult Error()
@@ -181,5 +190,7 @@ namespace Games_Catalog_N01589651.Controllers
                 return RedirectToAction("Error");
             }
         }
+
+
     }
 }

@@ -69,6 +69,73 @@ namespace Games_Catalog_N01589651.Controllers
             return Ok(GameDto);
         }
 
+        /// <summary>
+        /// Gathers information about all games related to a particular Developer ID
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: all games in the database, including their associated species matched with a particular species ID
+        /// </returns>
+        /// <param name="id">Developer ID.</param>
+        /// <example>
+        /// GET: api/GameData/ListGamesForDevelopers/3
+        /// </example>
+        [HttpGet]
+        [ResponseType(typeof(GameDto))]
+        [Route("api/GameData/ListGamesForDevelopers/{id}")]
+        public IHttpActionResult ListGamesForDevelopers(int id)
+        {
+            List<Game> Games = db.Games.Where(a => a.DeveloperId == id).ToList();
+            List<GameDto> GameDtos = new List<GameDto>();
+
+            Games.ForEach(g => GameDtos.Add(new GameDto()
+            {
+                GameId = g.GameId,
+                GameName = g.GameName,
+                ReleaseDate = g.ReleaseDate,
+                Price = g.Price,
+                Description = g.Description,
+                DeveloperId = g.Developers.DeveloperId,
+                DeveloperName = g.Developers.DeveloperStudioName
+            }
+            ));
+
+            return Ok(GameDtos);
+        }
+
+        /// <summary>
+        /// Gathers information about all games related to a particular Genre ID
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: all games in the database, including their associated Genre matched with a particular Genre ID
+        /// </returns>
+        /// <param name="id">Genre ID.</param>
+        /// <example>
+        /// GET: api/GameData/ListGamesForGenre/3
+        /// </example>
+        [HttpGet]
+        [ResponseType(typeof(GameDto))]
+        [Route("api/GameData/ListGamesForGenre/{id}")]
+        public IHttpActionResult ListGamesForGenre(int id)
+        {
+            List<Game> Games = db.Games.Where(a => a.GenreId == id).ToList();
+            List<GameDto> GameDtos = new List<GameDto>();
+
+            Games.ForEach(g => GameDtos.Add(new GameDto()
+            {
+                GameId = g.GameId,
+                GameName = g.GameName,
+                ReleaseDate = g.ReleaseDate,
+                Price = g.Price,
+                Description = g.Description,
+                GenreId = g.Genres.GenreId,
+                GenreName = g.Genres.GenreName            }
+            ));
+
+            return Ok(GameDtos);
+        }
+
         // POST: api/GameData/UpdateGame/5
         [ResponseType(typeof(void))]
         [HttpPost]

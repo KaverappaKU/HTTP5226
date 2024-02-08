@@ -1,4 +1,5 @@
 ﻿using Games_Catalog_N01589651.Models;
+using Games_Catalog_N01589651.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -38,18 +39,25 @@ namespace Games_Catalog_N01589651.Controllers
         // GET: Genre/Details/2
         public ActionResult Details(int id)
         {
-
+            GenreDetails ViewModel = new GenreDetails();
             //objective: communicate with our Genre data api to retrieve one Genre
             //curl https://localhost:44370/api/genredata/findgenre/{id}
 
             string url = "genredata/findgenre/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
-            Debug.WriteLine("The response code is ");
-            Debug.WriteLine(response.StatusCode);
-
             GenreDto SelectedGenre = response.Content.ReadAsAsync<GenreDto>().Result;
-            return View(SelectedGenre);
+
+            url = "GameData/ListGamesForGenre/" + id;
+            response = client.GetAsync(url).Result;
+            IEnumerable<GameDto> gameDtos = response.Content.ReadAsAsync<IEnumerable<GameDto>>().Result;
+
+
+
+            ViewModel.SelectedGenre = SelectedGenre;
+            ViewModel.GameCollection = gameDtos;
+
+            return View(ViewModel);
         }
 
         public ActionResult Error()

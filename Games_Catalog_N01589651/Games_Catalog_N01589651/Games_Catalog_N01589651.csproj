@@ -216,6 +216,8 @@
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ViewModels\DeveloperDetails.cs" />
+    <Compile Include="Models\ViewModels\GenreDetails.cs" />
     <Compile Include="Models\ViewModels\NewGame.cs" />
     <Compile Include="Models\ViewModels\UpdateGame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
