@@ -1,4 +1,5 @@
-﻿﻿
+﻿﻿@model Games_Catalog_N01589651.Models.ViewModels.NewGame
+    ﻿
 @{
     ViewBag.Title = "Create";
 }
@@ -9,7 +10,7 @@
         <label class="form-label">Game Name: </label> <input class="form-control" type="text" name="GameName" />
     </div>
     <div class="mb-3">
-        <label class="form-label">Release Date: </label> <input class="form-control" type="datetime" name="ReleaseDate" />
+        <label class="form-label">Release Date: </label> <input class="form-control" type="date" name="ReleaseDate" />
     </div>
     <div class="mb-3">
         <label class="form-label">Price: </label> <input class="form-control" type="number" name="Price" />
@@ -18,10 +19,26 @@
         <label class="form-label">Description: </label> <input class="form-control" type="text" name="Description" />
     </div>
     <div class="mb-3">
-        <label class="form-label">Genre ID: </label> <input class="form-control" type="number" name="GenreId" />
+        <label class="form-label">Genre ID: </label>
+        <select class="form-select" name="GenreId">
+            <option disabled selected>--Select Genre--</option>
+            @foreach (var genre in Model.GenreOptions)
+            {
+                <option value="@genre.GenreId">@genre.GenreName</option>
+
+            }
+        </select>
     </div>
     <div class="mb-3">
-        <label class="form-label">Developer ID: </label> <input class="form-control" type="text" name="DeveloperId" />
+        <label class="form-label">Developer ID: </label>
+        <select class="form-select" name="DeveloperId">
+            <option disabled selected>--Select Developer--</option>
+            @foreach (var developer in Model.DeveloperOptions)
+            {
+                <option value="@developer.DeveloperId">@developer.DeveloperStudioName</option>
+
+            }
+        </select>
     </div>
     <div class="mb-3">
         <input class="btn btn-primary" type="submit" value="Add Game" />

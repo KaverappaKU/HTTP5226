@@ -1,0 +1,18 @@
+﻿﻿@model Games_Catalog_N01589651.Models.DeveloperDto
+    ﻿
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Developer</h2>
+<form action="/Developer/Update/@Model.DeveloperId" method="POST">
+    <input type="text" style="display:none;" name="DeveloperId" value="@Model.DeveloperId" />
+    <div class="mb-3">
+        <label class="form-label">Developer Name: </label> <input class="form-control" type="text" value="@Model.DeveloperStudioName" name="DeveloperStudioName" />
+    </div>
+    <div class="mb-3">
+        <input class="btn btn-primary" type="submit" value="Update Developer" />
+    </div>
+</form>
+
+

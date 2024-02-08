@@ -1,29 +1,56 @@
-﻿﻿@model Games_Catalog_N01589651.Models.GameDto
+﻿﻿@model Games_Catalog_N01589651.Models.ViewModels.UpdateGame
+
 @{
     ViewBag.Title = "Edit";
 }
 
 <h2>Edit Game</h2>
 
-<form action="/Game/Update/@Model.GameId" method="POST">
-    <input type="text" style="display:none;" name="GameId" value="@Model.GameId" />
+<form action="/Game/Update/@Model.SelectedGame.GameId" method="POST">
+    <input type="text" style="display:none;" name="GameId" value="@Model.SelectedGame.GameId" />
     <div class="mb-3">
-        <label class="form-label">Game Name: </label> <input class="form-control" value="@Model.GameName" type="text" name="GameName" />
+        <label class="form-label">Game Name: </label> <input class="form-control" value="@Model.SelectedGame.GameName" type="text" name="GameName" />
     </div>
     <div class="mb-3">
-        <label class="form-label">Release Date: </label> <input class="form-control" type="date" value="@Model.ReleaseDate" name="ReleaseDate" />
+        <label class="form-label">Release Date: </label> <input class="form-control" type="date" value="@ViewBag.ReleaseDate" name="ReleaseDate" />
     </div>
     <div class="mb-3">
-        <label class="form-label">Price: </label> <input class="form-control" type="number" value="@Model.Price" name="Price" />
+        <label class="form-label">Price: </label> <input class="form-control" type="number" value="@Model.SelectedGame.Price" name="Price" />
     </div>
     <div class="mb-3">
-        <label class="form-label">Description: </label> <input class="form-control" type="text" value="@Model.Description" name="Description" />
+        <label class="form-label">Description: </label> <input class="form-control" type="text" value="@Model.SelectedGame.Description" name="Description" />
     </div>
     <div class="mb-3">
-        <label class="form-label">Genre ID: </label> <input class="form-control" type="number" name="GenreId" value="@Model.GenreId" />
+        <label class="form-label">Genre ID: </label>
+        <select class="form-select" name="GenreId">
+            <option disabled>--Select Genre--</option>
+            @foreach (var genre in Model.GenreOptions)
+            {
+                string selected = "";
+                if (genre.GenreId == Model.SelectedGame.GenreId)
+                {
+                    selected = "selected";
+                }
+                <option value="@genre.GenreId" @selected>@genre.GenreName</option>
+
+            }
+        </select>
     </div>
     <div class="mb-3">
-        <label class="form-label">Developer ID: </label> <input class="form-control" type="text" name="DeveloperId" value="@Model.DeveloperId" />
+        <label class="form-label">Developer ID: </label>
+        <select class="form-select" name="DeveloperId">
+            <option disabled>--Select Developer--</option>
+            @foreach (var developer in Model.DeveloperOptions)
+            {
+                string selected = "";
+                if (developer.DeveloperId == Model.SelectedGame.DeveloperId)
+                {
+                    selected = "selected";
+                }
+                <option value="@developer.DeveloperId" @selected>@developer.DeveloperStudioName</option>
+
+            }
+        </select>
     </div>
     <div class="mb-3">
         <input class="btn btn-primary" type="submit" value="Update Game" />

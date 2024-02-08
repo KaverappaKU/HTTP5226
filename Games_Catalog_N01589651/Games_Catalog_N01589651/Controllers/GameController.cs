@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
@@ -7,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using Games_Catalog_N01589651.Models;
+using Games_Catalog_N01589651.Models.ViewModels;
 
 namespace Games_Catalog_N01589651.Controllers
 {
@@ -61,17 +63,26 @@ namespace Games_Catalog_N01589651.Controllers
         // GET: Game/New
         public ActionResult New()
         {
+            NewGame ViewModel = new NewGame();    
+            
             //information about all genre in the system.
             //GET api/genredata/listgenre
 
-            //string url = "genredata/listgenre";
-            //HttpResponseMessage response = client.GetAsync(url).Result;
-            //IEnumerable<GenreDto> SpeciesOptions = response.Content.ReadAsAsync<IEnumerable<GenreDto>>().Result;
+            string url = "genredata/listgenre";
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            IEnumerable<GenreDto> GenreOptions = response.Content.ReadAsAsync<IEnumerable<GenreDto>>().Result;
+            ViewModel.GenreOptions = GenreOptions;
+            //information about all developer in the system.
+            //GET api/developerdata/listdeveloper
 
-            //return View(GenreOptions);
-            return View();
+            url = "developerdata/listdeveloper";
+            response = client.GetAsync(url).Result;
+            IEnumerable<DeveloperDto> DeveloperOptions = response.Content.ReadAsAsync<IEnumerable<DeveloperDto>>().Result;
+            ViewModel.DeveloperOptions = DeveloperOptions;    
+
+            return View(ViewModel);
         }
-
+        
         // POST: Game/Create
         [HttpPost]
         public ActionResult Create(Game game)
@@ -102,34 +113,30 @@ namespace Games_Catalog_N01589651.Controllers
         // GET: Game/Edit/5
         public ActionResult Edit(int id)
         {
-            //UpdateGame ViewModel = new UpdateGame();
+            UpdateGame ViewModel = new UpdateGame();
 
-            ////the existing game information
-            //string url = "gamedata/findgame/" + id;
-            //HttpResponseMessage response = client.GetAsync(url).Result;
-            //GameDto SelectedGame = response.Content.ReadAsAsync<GameDto>().Result;
-            //ViewModel.SelectedGame = SelectedGame;
-
-            //// all genre to choose from when updating this game
-            ////the existing game information
-            //url = "genredata/listgenre/";
-            //response = client.GetAsync(url).Result;
-            //IEnumerable<GenreDto> GenreOptions = response.Content.ReadAsAsync<IEnumerable<GenreDto>>().Result;
-
-            //ViewModel.GenreOptions = GenreOptions;
-
-            //return View(ViewModel);
+            //the existing game information
             string url = "gamedata/findgame/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
+            GameDto SelectedGame = response.Content.ReadAsAsync<GameDto>().Result;
+            ViewModel.SelectedGame = SelectedGame;
 
-            //Debug.WriteLine("The response code is ");
-            //Debug.WriteLine(response.StatusCode);
+            // all genre to choose from when updating this game
+            //the existing game information
+            url = "genredata/listgenre/";
+            response = client.GetAsync(url).Result;
+            IEnumerable<GenreDto> GenreOptions = response.Content.ReadAsAsync<IEnumerable<GenreDto>>().Result;
+            ViewModel.GenreOptions = GenreOptions;
 
-            GameDto selectedgame = response.Content.ReadAsAsync<GameDto>().Result;
-            //Debug.WriteLine("Game received : ");
-            //Debug.WriteLine(selectedanimal.AnimalName);
+            // all developer to choose from when updating this game
+            //the existing game information
+            url = "developerdata/listdeveloper/";
+            response = client.GetAsync(url).Result;
+            IEnumerable<DeveloperDto> DeveloperOptions = response.Content.ReadAsAsync<IEnumerable<DeveloperDto>>().Result;
+            ViewModel.DeveloperOptions = DeveloperOptions;
+            ViewBag.ReleaseDate = Convert.ToDateTime(SelectedGame.ReleaseDate).ToString("yyyy-MM-dd");
 
-            return View(selectedgame);
+            return View(ViewModel);
         }
 
         // POST: Game/Update/5

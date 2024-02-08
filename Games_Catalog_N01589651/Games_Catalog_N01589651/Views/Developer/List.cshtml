@@ -1,0 +1,18 @@
+﻿﻿@model IEnumerable<Games_Catalog_N01589651.Models.DeveloperDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List Developers</h2>
+<a class="btn btn-primary m-3 " href="/Developer/New">New Developer</a>
+<div class="list-group">
+    @foreach (var developer in Model)
+    {
+        <div class="list-group-item m-3">
+            <a style="text-decoration:none;" href="/Developer/Details/@developer.DeveloperId">@developer.DeveloperStudioName</a>
+            <a class="btn btn-primary m-3 float-end" href="/Developer/Edit/@developer.DeveloperId">Edit</a>
+            <a class="btn btn-danger m-3 float-end" href="/Developer/DeleteConfirm/@developer.DeveloperId">Delete</a>
+        </div>
+
+    }
+</div>

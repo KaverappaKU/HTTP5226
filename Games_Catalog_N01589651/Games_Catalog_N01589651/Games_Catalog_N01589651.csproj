@@ -216,6 +216,8 @@
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ViewModels\NewGame.cs" />
+    <Compile Include="Models\ViewModels\UpdateGame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -296,10 +298,15 @@
     <Content Include="Views\Game\New.cshtml" />
     <Content Include="Views\Game\Edit.cshtml" />
     <Content Include="Views\Game\DeleteConfirm.cshtml" />
+    <Content Include="Views\Developer\New.cshtml" />
+    <Content Include="Views\Developer\Edit.cshtml" />
+    <Content Include="Views\Developer\DeleteConfirm.cshtml" />
+    <Content Include="Views\Developer\Error.cshtml" />
+    <Content Include="Views\Developer\List.cshtml" />
+    <Content Include="Views\Developer\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Developer\" />
     <Folder Include="Views\Genre\" />
   </ItemGroup>
   <ItemGroup>
