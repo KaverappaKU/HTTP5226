@@ -71,14 +71,6 @@ namespace Games_Catalog_N01589651.Controllers
         // GET: Developer/New
         public ActionResult New()
         {
-            //information about all Developer in the system.
-            //GET api/developerdata/listdeveloper
-
-            //string url = "developerdata/listdeveloper";
-            //HttpResponseMessage response = client.GetAsync(url).Result;
-            //IEnumerable<DeveloperDto> SpeciesOptions = response.Content.ReadAsAsync<IEnumerable<DeveloperDto>>().Result;
-
-            //return View(GenreOptions);
             return View();
         }
 
@@ -112,32 +104,11 @@ namespace Games_Catalog_N01589651.Controllers
         // GET: Developer/Edit/5
         public ActionResult Edit(int id)
         {
-            //updatedeveloper ViewModel = new updatedeveloper();
-
-            ////the existing Developer information
-            //string url = "developerdata/finddeveloper/" + id;
-            //HttpResponseMessage response = client.GetAsync(url).Result;
-            //DeveloperDto SelectedDeveloper = response.Content.ReadAsAsync<DeveloperDto>().Result;
-            //ViewModel.SelectedDeveloper = SelectedDeveloper;
-
-            //// all Developer to choose from when updating this Developer
-            ////the existing Developer information
-            //url = "developerdata/listdeveloper/";
-            //response = client.GetAsync(url).Result;
-            //IEnumerable<DeveloperDto> GenreOptions = response.Content.ReadAsAsync<IEnumerable<DeveloperDto>>().Result;
-
-            //ViewModel.GenreOptions = GenreOptions;
-
-            //return View(ViewModel);
             string url = "developerdata/finddeveloper/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
-            //Debug.WriteLine("The response code is ");
-            //Debug.WriteLine(response.StatusCode);
-
             DeveloperDto SelectedDeveloper = response.Content.ReadAsAsync<DeveloperDto>().Result;
-            //Debug.WriteLine("Developer received : ");
-            //Debug.WriteLine(selectedanimal.AnimalName);
+
 
             return View(SelectedDeveloper);
         }

@@ -1,0 +1,18 @@
+﻿﻿@model IEnumerable<Games_Catalog_N01589651.Models.GenreDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List Genre</h2>
+<a class="btn btn-info m-3 " href="/Genre/New">New Genre</a>
+<div class="list-group">
+    @foreach (var genre in Model)
+    {
+        <div class="list-group-item m-3">
+            <a style="text-decoration:none;" href="/Genre/Details/@genre.GenreId">@genre.GenreName</a>
+            <a class="btn btn-primary m-3 float-end" href="/Genre/Edit/@genre.GenreId">Edit</a>
+            <a class="btn btn-danger m-3 float-end" href="/Genre/DeleteConfirm/@genre.GenreId">Delete</a>
+        </div>
+
+    }
+</div>

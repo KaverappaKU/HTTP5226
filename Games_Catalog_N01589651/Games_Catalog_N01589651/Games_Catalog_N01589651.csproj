@@ -306,10 +306,15 @@
     <Content Include="Views\Developer\Error.cshtml" />
     <Content Include="Views\Developer\List.cshtml" />
     <Content Include="Views\Developer\Details.cshtml" />
+    <Content Include="Views\Genre\DeleteConfirm.cshtml" />
+    <Content Include="Views\Genre\Details.cshtml" />
+    <Content Include="Views\Genre\Edit.cshtml" />
+    <Content Include="Views\Genre\Error.cshtml" />
+    <Content Include="Views\Genre\List.cshtml" />
+    <Content Include="Views\Genre\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Genre\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

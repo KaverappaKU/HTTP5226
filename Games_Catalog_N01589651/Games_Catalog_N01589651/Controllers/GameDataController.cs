@@ -13,9 +13,20 @@ namespace Games_Catalog_N01589651.Controllers
 {
     public class GameDataController : ApiController
     {
-        //List Game
+        
 
         private ApplicationDbContext db = new ApplicationDbContext();
+
+        /// <summary>
+        /// Returns all games in the system.
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: all games in the database, including their associated genre and developers.
+        /// </returns>
+        /// <example>
+        /// GET: api/GameData/ListGames
+        /// </example>
 
         [HttpGet]
         [Route("api/GameData/ListGames")]
@@ -41,7 +52,20 @@ namespace Games_Catalog_N01589651.Controllers
             return GameDtos;
         }
 
-        // GET: api/GameData/FindGame/2
+        /// <summary>
+        /// Returns all games in the system.
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: A game in the system matching up to the gamme ID primary key
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <param name="id">The primary key of the game</param>
+        /// <example>
+        /// GET: api/GameData/FindGame/2
+        /// </example>
+     
         [ResponseType(typeof(Game))]
         [HttpGet]
         [Route("api/gamedata/findgame/{id}")]
@@ -74,7 +98,7 @@ namespace Games_Catalog_N01589651.Controllers
         /// </summary>
         /// <returns>
         /// HEADER: 200 (OK)
-        /// CONTENT: all games in the database, including their associated species matched with a particular species ID
+        /// CONTENT: all games in the database, including their associated developers matched with a particular developer ID
         /// </returns>
         /// <param name="id">Developer ID.</param>
         /// <example>
@@ -136,7 +160,23 @@ namespace Games_Catalog_N01589651.Controllers
             return Ok(GameDtos);
         }
 
-        // POST: api/GameData/UpdateGame/5
+        /// <summary>
+        /// Updates a particular game in the system with POST Data input
+        /// </summary>
+        /// <param name="id">Represents the Game ID primary key</param>
+        /// <param name="Game">JSON FORM DATA of an game</param>
+        /// <returns>
+        /// HEADER: 204 (Success, No Content Response)
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// or
+        /// HEADER: 404 (Not Found)
+        /// </returns>
+        /// <example>
+        /// POST: api/GameData/UpdateGame/5
+        /// FORM DATA: Game JSON Object
+        /// </example>
+         
         [ResponseType(typeof(void))]
         [HttpPost]
         [Route("api/gamedata/updategame/{id}")]
@@ -173,7 +213,21 @@ namespace Games_Catalog_N01589651.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/GameData/AddGame
+        /// <summary>
+        /// Adds an game to the system
+        /// </summary>
+        /// <param name="Game">JSON FORM DATA of an game</param>
+        /// <returns>
+        /// HEADER: 201 (Created)
+        /// CONTENT: Game ID, Game Data
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// </returns>
+        /// <example>
+        /// POST: POST: api/GameData/AddGame
+        /// FORM DATA: Game JSON Object
+        /// </example>
+         
         [ResponseType(typeof(Game))]
         [HttpPost]
         [Route("api/gamedata/addgame")]

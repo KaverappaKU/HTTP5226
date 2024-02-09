@@ -15,6 +15,17 @@ namespace Games_Catalog_N01589651.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        /// <summary>
+        /// Returns all Developer in the system.
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: all Developer in the database..
+        /// </returns>
+        /// <example>
+        /// GET: api/DeveloperData/ListDeveloper
+        /// </example>
+
         [HttpGet]
         [Route("api/DeveloperData/ListDeveloper")]
 
@@ -32,7 +43,20 @@ namespace Games_Catalog_N01589651.Controllers
             return DeveloperDtos;
         }
 
-        // GET: api/DeveloperData/FindDeveloper/2
+        /// <summary>
+        /// Returns all Developer in the system.
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: An Developer in the system matching up to the Developer ID primary key
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <param name="id">The primary key of the Developer</param>
+        /// <example>
+        /// GET: api/DeveloperData/FindDeveloper/2
+        /// </example>
+         
         [ResponseType(typeof(Developer))]
         [HttpGet]
         [Route("api/DeveloperData/FindDeveloper/{id}")]
@@ -52,7 +76,23 @@ namespace Games_Catalog_N01589651.Controllers
             return Ok(DeveloperDto);
         }
 
-        // POST: api/DeveloperData/UpdateDeveloper/5
+        /// <summary>
+        /// Updates a particular Developer in the system with POST Data input
+        /// </summary>
+        /// <param name="id">Represents the Developer ID primary key</param>
+        /// <param name="Developer">JSON FORM DATA of an Developer</param>
+        /// <returns>
+        /// HEADER: 204 (Success, No Content Response)
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// or
+        /// HEADER: 404 (Not Found)
+        /// </returns>
+        /// <example>
+        /// POST: api/DeveloperData/UpdateDeveloper/5
+        /// FORM DATA: Developer JSON Object
+        /// </example>
+         
         [ResponseType(typeof(void))]
         [HttpPost]
         [Route("api/DeveloperData/UpdateDeveloper/{id}")]
@@ -89,7 +129,21 @@ namespace Games_Catalog_N01589651.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/DeveloperData/AddDeveloper
+        /// <summary>
+        /// Adds an Developer to the system
+        /// </summary>
+        /// <param name="Developer">JSON FORM DATA of an Developer</param>
+        /// <returns>
+        /// HEADER: 201 (Created)
+        /// CONTENT: Developer ID, Developer Data
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// </returns>
+        /// <example>
+        /// POST: api/DeveloperData/AddDeveloper
+        /// FORM DATA: Developer JSON Object
+        /// </example>
+         
         [ResponseType(typeof(Developer))]
         [HttpPost]
         [Route("api/DeveloperData/AddDeveloper")]

@@ -1,0 +1,16 @@
+﻿﻿@model Games_Catalog_N01589651.Models.GenreDto
+    ﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Add Genre</h2>
+<form action="/Genre/Create" method="POST">
+    <div class="mb-3">
+        <label class="form-label">Genre Name: </label> <input class="form-control" type="text" name="GenreName" />
+    </div>
+    <div class="mb-3">
+        <input class="btn btn-primary" type="submit" value="Add Genre" />
+    </div>
+</form>
+

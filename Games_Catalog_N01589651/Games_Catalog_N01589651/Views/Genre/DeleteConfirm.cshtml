@@ -1,0 +1,13 @@
+﻿﻿@model Games_Catalog_N01589651.Models.GenreDto
+
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Are you sure you want to delete this @Model.GenreName?</h2>
+<form action="/Genre/Delete/@Model.GenreId" method="POST">
+    <a class="btn btn-primary m-3" href="/Genre/List">Cancel</a>
+    <input class="btn btn-danger float-r" type="submit" value="Confirm Delete" />
+
+</form>
+

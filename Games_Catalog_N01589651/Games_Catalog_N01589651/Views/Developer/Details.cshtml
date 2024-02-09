@@ -7,10 +7,11 @@
 }
 
 <a href="/Developer/List">Go back to list</a>
-<div><strong>@Model.SelectedDeveloper.DeveloperStudioName</strong></div>
+
+<div><strong style="font-size:larger;">@Model.SelectedDeveloper.DeveloperStudioName</strong></div>
 
 @foreach (var game in Model.GameCollection)
 {
-       <div>@game.GameName</div>
+       <div><ul><li><a style="text-decoration:none;" href="/Game/Details/@game.GameId" />@game.GameName</li></ul></div>
 }
 

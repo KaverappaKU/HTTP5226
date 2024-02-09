@@ -1,0 +1,16 @@
+﻿﻿@model Games_Catalog_N01589651.Models.GenreDto
+    ﻿
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Genre</h2>
+<form action="/Genre/Update/@Model.GenreId" method="POST">
+    <input type="text" style="display:none;" name="GenreId" value="@Model.GenreId" />
+    <div class="mb-3">
+        <label class="form-label">Genre Name: </label> <input class="form-control" type="text" value="@Model.GenreName" name="GenreName" />
+    </div>
+    <div class="mb-3">
+        <input class="btn btn-primary" type="submit" value="Update Genre" />
+    </div>
+</form>

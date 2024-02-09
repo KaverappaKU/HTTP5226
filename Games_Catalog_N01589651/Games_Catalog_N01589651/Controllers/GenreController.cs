@@ -69,14 +69,6 @@ namespace Games_Catalog_N01589651.Controllers
         // GET: Genre/New
         public ActionResult New()
         {
-            //information about all genre in the system.
-            //GET api/genredata/listgenre
-
-            //string url = "genredata/listgenre";
-            //HttpResponseMessage response = client.GetAsync(url).Result;
-            //IEnumerable<GenreDto> SpeciesOptions = response.Content.ReadAsAsync<IEnumerable<GenreDto>>().Result;
-
-            //return View(GenreOptions);
             return View();
         }
 
@@ -110,32 +102,10 @@ namespace Games_Catalog_N01589651.Controllers
         // GET: Genre/Edit/5
         public ActionResult Edit(int id)
         {
-            //updategenre ViewModel = new updategenre();
-
-            ////the existing Genre information
-            //string url = "genredata/findgenre/" + id;
-            //HttpResponseMessage response = client.GetAsync(url).Result;
-            //GenreDto SelectedGenre = response.Content.ReadAsAsync<GenreDto>().Result;
-            //ViewModel.SelectedGenre = SelectedGenre;
-
-            //// all genre to choose from when updating this Genre
-            ////the existing Genre information
-            //url = "genredata/listgenre/";
-            //response = client.GetAsync(url).Result;
-            //IEnumerable<GenreDto> GenreOptions = response.Content.ReadAsAsync<IEnumerable<GenreDto>>().Result;
-
-            //ViewModel.GenreOptions = GenreOptions;
-
-            //return View(ViewModel);
             string url = "genredata/findgenre/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
-            //Debug.WriteLine("The response code is ");
-            //Debug.WriteLine(response.StatusCode);
-
             GenreDto SelectedGenre = response.Content.ReadAsAsync<GenreDto>().Result;
-            //Debug.WriteLine("Genre received : ");
-            //Debug.WriteLine(selectedanimal.AnimalName);
 
             return View(SelectedGenre);
         }

@@ -1,0 +1,14 @@
+﻿@model Games_Catalog_N01589651.Models.ViewModels.GenreDetails
+
+@{
+    ViewBag.Title = "View";
+}
+
+<a href="/Genre/List">Go back to list</a>
+<div><strong style="font-size:larger;">@Model.SelectedGenre.GenreName</strong></div>
+
+@foreach (var game in Model.GameCollection)
+{
+    <div><ul><li><a style="text-decoration:none;" href="/Game/Details/@game.GameId" />@game.GameName</li></ul></div>
+}
+

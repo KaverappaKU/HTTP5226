@@ -15,6 +15,17 @@ namespace Games_Catalog_N01589651.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        /// <summary>
+        /// Returns all Genre in the system.
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: all Genre in the database..
+        /// </returns>
+        /// <example>
+        /// GET: api/GenreData/ListGenre
+        /// </example>
+
         [HttpGet]
         [Route("api/GenreData/ListGenre")]
 
@@ -32,7 +43,20 @@ namespace Games_Catalog_N01589651.Controllers
             return GenreDtos;
         }
 
-        // GET: api/GenreData/FindGenre/2
+        /// <summary>
+        /// Returns all Genre in the system.
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: An Genre in the system matching up to the Genre ID primary key
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <param name="id">The primary key of the Genre</param>
+        /// <example>
+        /// GET: GET: api/GenreData/FindGenre/2
+        /// </example>
+         
         [ResponseType(typeof(Genre))]
         [HttpGet]
         [Route("api/GenreData/FindGenre/{id}")]
@@ -52,7 +76,23 @@ namespace Games_Catalog_N01589651.Controllers
             return Ok(GenreDto);
         }
 
-        // POST: api/GenreData/UpdateGenre/5
+        /// <summary>
+        /// Updates a particular Genre in the system with POST Data input
+        /// </summary>
+        /// <param name="id">Represents the Genre ID primary key</param>
+        /// <param name="Genre">JSON FORM DATA of an Genre</param>
+        /// <returns>
+        /// HEADER: 204 (Success, No Content Response)
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// or
+        /// HEADER: 404 (Not Found)
+        /// </returns>
+        /// <example>
+        /// POST: api/GenreData/UpdateGenre/5
+        /// FORM DATA: Genre JSON Object
+        /// </example>
+         
         [ResponseType(typeof(void))]
         [HttpPost]
         [Route("api/GenreData/UpdateGenre/{id}")]
@@ -89,7 +129,21 @@ namespace Games_Catalog_N01589651.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/GenreData/AddGenre
+        /// <summary>
+        /// Adds an Genre to the system
+        /// </summary>
+        /// <param name="Genre">JSON FORM DATA of an Genre</param>
+        /// <returns>
+        /// HEADER: 201 (Created)
+        /// CONTENT: Genre ID, Genre Data
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// </returns>
+        /// <example>
+        /// POST: api/GenreData/AddGenre
+        /// FORM DATA: Genre JSON Object
+        /// </example>
+         
         [ResponseType(typeof(Genre))]
         [HttpPost]
         [Route("api/GenreData/AddGenre")]
